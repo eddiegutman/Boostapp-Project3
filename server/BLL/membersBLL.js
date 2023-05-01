@@ -50,7 +50,10 @@ const updateMember = async (id, obj) => {
 
 // DELETE - delete a member
 const deleteMember = async (id) => {
+    // delete the member
     await MemberModel.findByIdAndDelete(id);
+    // delete his subscriptions
+    await SubscriptionModel.deleteMany({ memberID: id })
     return 'Member deleted successfully';
 }
 
