@@ -5,5 +5,5 @@ const SubscriptionSchema = new mongoose.Schema({
     memberID: { type: Schema.Types.ObjectId, ref: 'Member' },
     date: Date
 });
-
-module.exports = mongoose.model('Subscription', SubscriptionSchema);
+const Subscription = mongoose.model('Subscription', SubscriptionSchema);
+module.exports = Subscription;

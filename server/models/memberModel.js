@@ -6,4 +6,5 @@ const MemberSchema = new mongoose.Schema({
     city: String
 });
 
-module.exports = mongoose.model('Member', MemberSchema);
+const Member = mongoose.model('Member', MemberSchema);
+module.exports = Member;
