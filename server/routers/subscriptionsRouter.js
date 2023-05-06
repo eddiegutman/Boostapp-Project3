@@ -1,5 +1,5 @@
 const express = require('express');
-const subscriptionsBLL = require('../BLL/subscriptionsBLL');
+const subscriptionsBLL = require('../BLL/subscriptionBLL');
 
 const router = express.Router();
 
