@@ -13,6 +13,16 @@ router.get("/", async (request, response) => {
     }
 });
 
+// GET - get all members with their subscriptions
+router.get("/subs", async (request, response) => {
+    try {
+        const members = await membersBLL.getAllMembersWithSubs();
+        response.status(200).json(members);
+    } catch (error) {
+        return response.status(500).json(error);
+    }
+});
+
 // GET - get member by id
 router.get("/:id", async (request, response) => {
     try {
@@ -24,15 +34,7 @@ router.get("/:id", async (request, response) => {
     }
 });
 
-// GET - get all members with their subscriptions
-router.get("/subs", async (request, response) => {
-    try {
-        const members = await membersBLL.getAllMembersWithSubs();
-        response.status(200).json(members);
-    } catch (error) {
-        return response.status(500).json(error);
-    }
-});
+
 
 // POST - add a new member
 router.post("/", async (request, response) => {
@@ -57,7 +59,7 @@ router.put("/:id", async (request, response) => {
     }
 });
 
-// DELETE - delete a customer
+// DELETE - delete a member
 router.delete("/:id", async (request, response) => {
     try {
         const id = request.params.id;

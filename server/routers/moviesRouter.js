@@ -13,22 +13,22 @@ router.get("/", async (request, response) => {
     }
 });
 
+// GET - get all movies with their subscribers
+router.get("/subs", async (request, response) => {
+    try {
+        const movies = await moviesBLL.getAllMoviesWithSubs();
+        response.status(200).json(movies);
+    } catch (error) {
+        return response.status(500).json(error);
+    }
+});
+
 // GET - get movie by id
 router.get("/:id", async (request, response) => {
     try {
         const id = request.params.id;
         const movie = await moviesBLL.getMovieByID(id);
         response.status(200).json(movie);
-    } catch (error) {
-        return response.status(500).json(error);
-    }
-});
-
-// GET - get all movies with their subscribers
-router.get("/subs", async (request, response) => {
-    try {
-        const movies = await moviesBLL.getAllMoviesWithSubs();
-        response.status(200).json(movies);
     } catch (error) {
         return response.status(500).json(error);
     }
