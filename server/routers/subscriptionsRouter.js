@@ -28,7 +28,7 @@ router.get("/:id", async (request, response) => {
 router.post("/", async (request, response) => {
     try {
         const subscription = request.body;
-        const status = await subscriptionsBLL.addSubscriptions(subscription);
+        const status = await subscriptionsBLL.addSubscription(subscription);
         response.status(200).json(status);
     } catch (error) {
         return response.status(500).json(error);
