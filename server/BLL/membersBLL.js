@@ -25,7 +25,10 @@ const getAllMembersWithSubs = async () => {
         const subscriptions = await Subscription.find({ memberID: member._id });
         for (let sub of subscriptions) {
             const movie = await Movie.findById(sub.movieID);
-            movies.push(movie);
+            movies.push({
+                movie: movie,
+                date: sub.date
+            });
         }
         data.push({
             member: member,
