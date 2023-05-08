@@ -35,9 +35,9 @@ function EditMovie() {
             genres: genres,
             image: { medium: movie.image.medium }
         }
-        const status = await updateMovie(id, updatedMovie);
+        const { data } = await updateMovie(id, updatedMovie);
         dispatch({ type: 'UPDATE_MOVIE', payload: updatedMovie });
-        alert(status.data);
+        alert(data);
         navigate('/movies/all');
     }
 
