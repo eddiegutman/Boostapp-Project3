@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <h1>Movies - Subscriptions Web Site</h1>
-      <Link to='/movies'>Movies</Link> &nbsp;
+      <Link to='/movies/all'>Movies</Link> &nbsp;
       <Link to='/subscriptions'>Subscriptions</Link> <br />
       <div style={{ border: '2px solid black' }}>
         <Routes>
