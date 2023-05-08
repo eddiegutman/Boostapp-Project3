@@ -1,7 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-
 
 function MovieSubs(props) {
     const subs = props.subs;

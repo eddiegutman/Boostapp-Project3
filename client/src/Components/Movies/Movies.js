@@ -1,15 +1,8 @@
 import React from 'react';
-import { Routes, Route, Link, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-
-import Movie from './Movie';
-import AddMovie from './AddMovie';
-import MovieList from './MovieList';
 
 function Movies() {
-    const movies = useSelector(state => state.movies);
-
     const [search, setSearch] = useState('');
 
     return (
