@@ -7,6 +7,7 @@ import Movies from './Components/Movies/Movies';
 import AddMovie from './Components/Movies/AddMovie';
 import MovieList from './Components/Movies/MovieList';
 import Subscriptions from './Components/Subscriptions/Subscriptions';
+import EditMovie from './Components/Movies/EditMovie';
 
 import { getAllMoviesWithSubs } from './libs/movieUtils';
 import { getAllMembersWithSubs } from './libs/membersUtils';
@@ -38,6 +39,7 @@ function App() {
           <Route path='/movies' element={<Movies />} >
             <Route path='all' element={<MovieList />} />
             <Route path='addMovie' element={<AddMovie />} />
+            <Route path='edit/:id' element={<EditMovie />} />
           </Route>
           <Route path='/subscriptions' element={<Subscriptions />} />
         </Routes>
