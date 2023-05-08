@@ -12,7 +12,7 @@ function AddMovie() {
         'Romance', 'Science-Fiction', 'Sports', 'Supernatural', 'Thriller', 'Travel',
         'War', 'Western'])
 
-    const [movie, setMovie] = useState({ name: '', premiered: '', image: { medium: '' } });
+    const [movie, setMovie] = useState({ _id: ObjectID().toHexString(), name: '', premiered: '', image: { medium: '' } });
     const [genres, setGenres] = useState([]);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -27,13 +27,7 @@ function AddMovie() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newMovie = {
-            _id: ObjectID(),
-            name: movie.name,
-            premiered: movie.premiered,
-            genres: genres,
-            image: { medium: movie.image.medium }
-        }
+        const newMovie = { ...movie, genres: genres }
         const status = await addMovie(newMovie);
         dispatch({ type: 'ADD_MOVIE', payload: newMovie });
         alert(status.data);
