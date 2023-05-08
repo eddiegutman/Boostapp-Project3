@@ -18,6 +18,12 @@ function appReducer(state = { movies: [], members: [] }, action) {
             state.movies[index].movie = { ...movie };
             return { movies: [...state.movies], members: [...state.members] };
         }
+        case 'DELETE_MOVIE': {
+            const id = action.payload;
+            const copy = state.movies.filter(entry => entry.movie._id !== id);
+            return { movies: [...copy], members: [...state.members] };
+
+        }
         default:
             return state;
     }
