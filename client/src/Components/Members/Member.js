@@ -22,7 +22,7 @@ function Member(props) {
             <span>City: {member.city}</span> <br />
             <button onClick={() => navigate(`/members/edit/${member._id}`)}>Edit</button>
             <button onClick={() => handleDelete(member._id)} >Delete</button> <br />
-            <MemberSubs subs={props.entry.subscriptions} />
+            <MemberSubs subs={props.entry.subscriptions} memberID={member._id} />
         </div>
     )
 }
