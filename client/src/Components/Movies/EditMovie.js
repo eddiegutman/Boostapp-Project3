@@ -28,13 +28,7 @@ function EditMovie() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const updatedMovie = {
-            _id: movie._id,
-            name: movie.name,
-            premiered: movie.premiered,
-            genres: genres,
-            image: { medium: movie.image.medium }
-        }
+        const updatedMovie = { ...movie, genres: genres }
         const { data } = await updateMovie(id, updatedMovie);
         dispatch({ type: 'UPDATE_MOVIE', payload: updatedMovie });
         alert(data);
@@ -43,12 +37,7 @@ function EditMovie() {
 
     const getData = async () => {
         const data = await getMovieByID(id);
-        setMovie({
-            _id: data._id,
-            name: data.name,
-            premiered: data.premiered,
-            image: { medium: data.image.medium }
-        });
+        setMovie({ ...data });
         setGenres([...data.genres]);
     }
 

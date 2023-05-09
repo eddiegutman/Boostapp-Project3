@@ -6,11 +6,15 @@ import { useDispatch } from 'react-redux';
 import Movies from './Components/Movies/Movies';
 import AddMovie from './Components/Movies/AddMovie';
 import MovieList from './Components/Movies/MovieList';
-import Subscriptions from './Components/Subscriptions/Subscriptions';
 import EditMovie from './Components/Movies/EditMovie';
+import MemberList from './Components/Members/MemberList';
+import AddMember from './Components/Members/AddMember';
+import EditMember from './Components/Members/EditMember';
 
 import { getAllMoviesWithSubs } from './libs/movieUtils';
 import { getAllMembersWithSubs } from './libs/membersUtils';
+import Members from './Components/Members/Members';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +37,7 @@ function App() {
     <div className="App">
       <h1>Movies - Subscriptions Web Site</h1>
       <Link to='/movies/all'>Movies</Link> &nbsp;
-      <Link to='/subscriptions'>Subscriptions</Link> <br />
+      <Link to='/members/all'>Members</Link> <br />
       <div style={{ border: '2px solid black' }}>
         <Routes>
           <Route path='/movies' element={<Movies />} >
@@ -41,7 +45,11 @@ function App() {
             <Route path='addMovie' element={<AddMovie />} />
             <Route path='edit/:id' element={<EditMovie />} />
           </Route>
-          <Route path='/subscriptions' element={<Subscriptions />} />
+          <Route path='/members' element={<Members />} >
+            <Route path='all' element={<MemberList />} />
+            <Route path='addMember' element={<AddMember />} />
+            <Route path='edit/:id' element={<EditMember />} />
+          </Route>
         </Routes>
       </div>
     </div>

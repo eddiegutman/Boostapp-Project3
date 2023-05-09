@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom';
 
 import Movie from './Movie';
 
-function MovieList(props) {
+function MovieList() {
     const movies = useSelector(state => state.movies);
     const [search, setSearch] = useOutletContext()
     return (
