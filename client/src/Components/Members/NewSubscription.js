@@ -8,12 +8,13 @@ function NewSubscription(props) {
     const id = props.memberID;
     const dispatch = useDispatch();
     const movies = useSelector(state => state.movies);
-    const [sub, setSub] = useState({ _id: ObjectID().toHexString(), movieID: '', memberID: id, date: '' });
+    const [sub, setSub] = useState({ movieID: '', memberID: id, date: '' });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const status = await addSubscription(sub);
-        dispatch({ type: 'ADD_SUB', payload: sub });
+        const newSub = { _id: ObjectID().toHexString(), ...sub };
+        const status = await addSubscription(newSub);
+        dispatch({ type: 'ADD_SUB', payload: newSub });
         alert(status.data);
         e.target.reset();
     }
