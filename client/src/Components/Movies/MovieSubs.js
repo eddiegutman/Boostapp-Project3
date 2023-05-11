@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function MovieSubs(props) {
     const subs = props.subs;
@@ -8,7 +9,8 @@ function MovieSubs(props) {
             <ul>
                 {subs.map(sub => {
                     return (<li key={sub.member._id}>
-                        {sub.member.fullname} &nbsp; {new Date(sub.date).toLocaleDateString('en-IL')}
+                        <Link to={`/members/${sub.member._id}`}>{sub.member.fullname}</Link> &nbsp;
+                        {new Date(sub.date).toLocaleDateString('en-IL')}
                     </li>)
                 })}
             </ul>
