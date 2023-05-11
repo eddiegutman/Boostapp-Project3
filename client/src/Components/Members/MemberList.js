@@ -6,7 +6,8 @@ import Member from './Member';
 
 function MemberList() {
     const members = useSelector(state => state.members);
-    const [search, setSearch] = useOutletContext()
+    const [search, setSearch] = useOutletContext();
+
     return (
         <div>
             <h3>Members list</h3>

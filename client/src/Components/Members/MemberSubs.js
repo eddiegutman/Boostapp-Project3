@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import NewSubscription from './NewSubscription';
 
 function MemberSubs(props) {
@@ -14,7 +15,8 @@ function MemberSubs(props) {
             <ul>
                 {subs.map(sub => {
                     return (<li key={sub.movie._id}>
-                        {sub.movie.name} &nbsp; {new Date(sub.date).toLocaleDateString('en-IL')}
+                        <Link to={`/movies/${sub.movie._id}`}>{sub.movie.name}</Link> &nbsp;
+                        {new Date(sub.date).toLocaleDateString('en-IL')}
                     </li>)
                 })}
             </ul>
