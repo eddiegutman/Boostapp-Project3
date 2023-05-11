@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 function Movies() {
+    const location = useLocation();
+    const path = location.pathname;
     const [search, setSearch] = useState('');
 
     return (
@@ -11,13 +13,14 @@ function Movies() {
             <div>
                 <Link to={'all'}>All Movies</Link> &nbsp;
                 <Link to={'addMovie'}>Add Movie</Link> &nbsp;
-                <span>
+                {path === '/movies/all' ? <span>
                     <label htmlFor='search'>Find Movie : </label>
-                    <input id='search' type={'text'} onChange={(e) => setSearch(e.target.value)} />
-                </span>
+                    <input id='search' type={'search'} onChange={(e) => setSearch(e.target.value)} />
+                </span> : null}
+
             </div>
             <div>
-                <Outlet context={[search, setSearch]}/>
+                <Outlet context={[search, setSearch]} />
             </div>
         </div>
     )
