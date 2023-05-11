@@ -10,10 +10,12 @@ import EditMovie from './Components/Movies/EditMovie';
 import MemberList from './Components/Members/MemberList';
 import AddMember from './Components/Members/AddMember';
 import EditMember from './Components/Members/EditMember';
+import Members from './Components/Members/Members';
+import MemberSearch from './Components/Members/MemberSearch';
+import MovieSearch from './Components/Movies/MovieSearch';
 
 import { getAllMoviesWithSubs } from './libs/movieUtils';
 import { getAllMembersWithSubs } from './libs/membersUtils';
-import Members from './Components/Members/Members';
 
 
 function App() {
@@ -41,11 +43,13 @@ function App() {
       <div style={{ border: '2px solid black' }}>
         <Routes>
           <Route path='/movies' element={<Movies />} >
+            <Route path=':id' element={<MovieSearch />} />
             <Route path='all' element={<MovieList />} />
             <Route path='addMovie' element={<AddMovie />} />
             <Route path='edit/:id' element={<EditMovie />} />
           </Route>
           <Route path='/members' element={<Members />} >
+            <Route path=':id' element={<MemberSearch />} />
             <Route path='all' element={<MemberList />} />
             <Route path='addMember' element={<AddMember />} />
             <Route path='edit/:id' element={<EditMember />} />
