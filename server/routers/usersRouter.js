@@ -29,10 +29,19 @@ router.get("/:id", async (request, response) => {
 router.post("/register", async (request, response) => {
     try {
         const user = request.body;
-        const status = await usersBLL.register(user);
-        response.status(200).json(status);
+        const registeredUser = await usersBLL.register(user);
+        request.login(registeredUser, err => {
+            if (err) return next(err);
+            response.status(200).json({
+                success: true,
+                message: 'Registration completed successfully'
+            });
+        })
     } catch (error) {
-        return response.status(500).json(error);
+        return response.json({
+            success: false,
+            message: error
+        });
     }
 });
 
