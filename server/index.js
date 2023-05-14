@@ -44,6 +44,11 @@ app.use(
         secret: "boostapp",
         resave: false,
         saveUninitialized: false,
+        cookie: {
+            httpOnly: true,
+            expires: Date.now() + 1000 * 60 * 60 * 24,
+            maxAge: 1000 * 60 * 60 * 24
+        },
         store: new MongoStore({ mongoUrl: "mongodb://localhost:27017/boostappProject3DB" }),
     })
 );
