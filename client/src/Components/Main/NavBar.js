@@ -21,7 +21,8 @@ function NavBar() {
             <Link to='/movies/all'>Movies</Link> &nbsp;
             <Link to='/members/all'>Members</Link> &nbsp;
             {authentication.success ? <span>
-                <span>Hello, {authentication.user.fullname}</span> &nbsp;
+                <span>{authentication.user.fullname}</span> &nbsp;
+                <Link to='/account'>Manage Account</Link> &nbsp;
                 <button onClick={handleLogout}>Logout</button>
             </span>
                 : <span>
