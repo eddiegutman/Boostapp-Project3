@@ -6,7 +6,7 @@ import ObjectID from 'bson-objectid';
 import { addMember } from '../../libs/membersUtils';
 
 function AddMember() {
-    const [member, setMember] = useState({_id: ObjectID().toHexString(), fullname: '', email: '', city: '' });
+    const [member, setMember] = useState({ _id: ObjectID().toHexString(), fullname: '', email: '', city: '' });
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

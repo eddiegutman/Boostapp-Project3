@@ -16,8 +16,8 @@ const getUserByID = async (id) => {
 const register = async (obj) => {
     const { fullname, username, email, password } = obj;
     const user = new User({ fullname: fullname, username: username, email: email });
-    await User.register(user, password);
-    return 'Register Completed successfully';
+    const registeredUser = await User.register(user, password);
+    return registeredUser;
 }
 
 // POST - change user password
