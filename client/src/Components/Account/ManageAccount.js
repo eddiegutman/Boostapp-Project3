@@ -5,12 +5,14 @@ import { authenticate } from '../../libs/authUtils';
 import { AuthContext } from '../../App';
 
 function ManageAccount() {
-    const { authentication } = useContext(AuthContext);
+    const { authentication, setAuthentication } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const authClient = async () => {
         const status = await authenticate();
-        if (!status.authenticate) {
+        if (status.authenticate) {
+            setAuthentication({ success: true, user: status.userData })
+        } else {
             navigate('/noAccess');
         }
     }

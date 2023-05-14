@@ -1,9 +1,11 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { authenticate } from '../../libs/authUtils';
+import { AuthContext } from '../../App';
 
 function Movies() {
+    const { setAuthentication } = useContext(AuthContext);
     const location = useLocation();
     const path = location.pathname;
     const [search, setSearch] = useState('');
@@ -11,7 +13,9 @@ function Movies() {
 
     const authClient = async () => {
         const status = await authenticate();
-        if (!status.authenticate) {
+        if (status.authenticate) {
+            setAuthentication({ success: true, user: status.userData })
+        } else {
             navigate('/noAccess');
         }
     }
