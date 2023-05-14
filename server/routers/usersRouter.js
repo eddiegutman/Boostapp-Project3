@@ -61,7 +61,8 @@ router.post("/changePassword/:id", async (request, response) => {
 router.put("/:id", async (request, response) => {
     try {
         const id = request.params.id;
-        const user = request.body;
+        const { fullname, email } = request.body;
+        const user = { fullname: fullname, email: email };
         const status = await usersBLL.updateUserData(id, user);
         response.status(200).json(status);
     } catch (error) {
