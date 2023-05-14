@@ -7,12 +7,7 @@ const router = express.Router();
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login/failed' }), async (request, response) => {
     response.status(200).json({
         success: true,
-        message: 'Login successful',
-        userData: {
-            id: request.user._id,
-            fullname: request.user.fullname,
-            email: request.user.email
-        }
+        message: 'Login successful'
     });
 });
 
@@ -38,11 +33,19 @@ router.get('/logout', (request, response, next) => {
 });
 
 // checks user authentication
-router.get("/checkAuthentication", (req, res) => {
-    if (req.isAuthenticated()) {
-        return res.json({ authenticate: true, message: 'welcome' });
+router.get("/checkAuthentication", (request, response) => {
+    if (request.isAuthenticated()) {
+        return response.json({
+            authenticate: true,
+            message: 'Authorized',
+            userData: {
+                id: request.user._id,
+                fullname: request.user.fullname,
+                email: request.user.email
+            }
+        });
     } else {
-        return res.json({ authenticate: false, message: 'No permission' });
+        return response.json({ authenticate: false, message: 'No permission, Please login' });
     }
 });
 
