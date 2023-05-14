@@ -1,11 +1,24 @@
 import React from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { authenticate } from '../../libs/authUtils';
 
 function Movies() {
     const location = useLocation();
     const path = location.pathname;
     const [search, setSearch] = useState('');
+    const navigate = useNavigate();
+
+    const authClient = async () => {
+        const status = await authenticate();
+        if (!status.authenticate) {
+            navigate('/noAccess');
+        }
+    }
+
+    useEffect(() => {
+        authClient();
+    }, [])
 
     return (
         <div style={{ border: '2px solid black' }}>
