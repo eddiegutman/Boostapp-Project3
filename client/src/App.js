@@ -22,6 +22,10 @@ import NavBar from './Components/Main/NavBar';
 import NonExist from './Components/Main/NonExist';
 import Home from './Components/Main/Home';
 import NoAccess from './Components/Main/NoAccess';
+import ManageAccount from './Components/Account/ManageAccount';
+import EditAccount from './Components/Account/EditAccount';
+import ChangePassword from './Components/Account/ChangePassword';
+import DeleteAccount from './Components/Account/DeleteAccount';
 
 export const AuthContext = createContext();
 
@@ -64,6 +68,11 @@ function App() {
               <Route path='all' element={<MemberList />} />
               <Route path='addMember' element={<AddMember />} />
               <Route path='edit/:id' element={<EditMember />} />
+            </Route>
+            <Route path='/account' element={<ManageAccount />} >
+              <Route path='editAccount' element={<EditAccount />} />
+              <Route path='changepassword' element={<ChangePassword />} />
+              <Route path='deleteAccount' element={<DeleteAccount />} />
             </Route>
             <Route path='noAccess' element={<NoAccess />} />
             <Route path="*" element={<NonExist />} />
