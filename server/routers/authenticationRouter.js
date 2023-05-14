@@ -3,7 +3,7 @@ const passport = require('passport');
 
 const router = express.Router();
 
-// POST - login a user
+// login a user
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login/failed' }), async (request, response) => {
     response.status(200).json({
         success: true,
@@ -16,7 +16,7 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/login/
     });
 });
 
-// GET - login failed 
+// login failed redirection
 router.get("/login/failed", async (request, response) => {
     response.json({
         success: false,
@@ -24,7 +24,7 @@ router.get("/login/failed", async (request, response) => {
     });
 });
 
-// GET - login failed 
+// logout
 router.get('/logout', (request, response, next) => {
     request.logout(function (err) {
         if (err) {
