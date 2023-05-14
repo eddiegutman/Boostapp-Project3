@@ -1,10 +1,14 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { register } from '../../libs/usersUtils';
+import { authenticate } from '../../libs/authUtils';
+import { AuthContext } from '../../App';
 
 function Register() {
     const [user, setUser] = useState({ username: '', fullname: '', email: '', password: '' });
+    const { setAuthentication } = useContext(AuthContext);
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -12,7 +16,11 @@ function Register() {
         const status = await register(user);
         alert(status.message);
         if (status.success) {
-            navigate('/login');
+            const authStatus = await authenticate();
+            if (authStatus.authenticate) {
+                setAuthentication({ success: true, user: authStatus.userData })
+                navigate('/movies/all');
+            }
         }
     }
 
