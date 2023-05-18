@@ -18,14 +18,17 @@ function NavBar() {
 
     return (
         <div>
-            <Link to='/movies/all'>Movies</Link> &nbsp;
-            <Link to='/members/all'>Members</Link> &nbsp;
+
             {authentication.success ? <span>
+                <Link to='/movies/all'>Movies</Link> &nbsp;
+                <Link to='/members/all'>Members</Link> &nbsp;
                 <span>{authentication.user.fullname}</span> &nbsp;
                 <Link to='/account'>Manage Account</Link> &nbsp;
                 <button onClick={handleLogout}>Logout</button>
             </span>
                 : <span>
+                    <Link to='/noAccess'>Movies</Link> &nbsp;
+                    <Link to='/noAccess'>Members</Link> &nbsp;
                     <Link to='/login'>Login</Link> &nbsp;
                     <Link to='/register'>Register</Link>
                 </span>}
