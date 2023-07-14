@@ -7,9 +7,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Web application for managing movies and subscriptions, including user registration and account managment.
-The frontend is built with ReactJS and Redux.
-The backend is built with NodeJS, ExpressJS, Mongoose.
+Web application for managing movies and subscriptions, including user registration and account managment. <br/>
+The frontend is built with ReactJS and Redux. <br/>
+The backend is built with NodeJS, ExpressJS, Mongoose. <br/>
 Using MongoDB as database.
 
 ### Built With
